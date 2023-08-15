@@ -40,11 +40,13 @@ suffix = case RbConfig::CONFIG['host_os']
 
            os = 'centos_8' if os.start_with?('rocky_8') || os.start_with?('rhel_8.')
 
-           os_based_on_debian_9 = os.start_with?('debian_9') ||
-                                  os.start_with?('deepin')
-           os = 'debian_9' if os_based_on_debian_9
+           os = 'debian_9' if os.start_with?('debian_9') ||
+                              os.start_with?('deepin')
 
-           os = 'debian_10' if !os_based_on_debian_9 && os.start_with?('debian')
+           os = 'debian_10' if os.start_with?('debian_10') ||
+                               os.start_with?('debian_11')
+
+           os = 'debian_12' if os.start_with?('debian_12')
 
            os = 'archlinux' if os.start_with?('arch_') ||
                                os.start_with?('manjaro_')
